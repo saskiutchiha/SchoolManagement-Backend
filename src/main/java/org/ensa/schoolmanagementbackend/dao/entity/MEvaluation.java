@@ -1,4 +1,4 @@
-package org.ensa.schoolmanagementbackend.model.entities;
+package org.ensa.schoolmanagementbackend.dao.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,4 +29,7 @@ public class MEvaluation {
 
     @OneToMany(mappedBy = "mEvaluation", cascade = CascadeType.ALL)
     private List<ElemMevaluation> elemMevaluations = new ArrayList<>();
+
+    @OneToMany(mappedBy = "mEval", cascade = CascadeType.ALL)
+    private List<Note> notes = new ArrayList<>();
 }

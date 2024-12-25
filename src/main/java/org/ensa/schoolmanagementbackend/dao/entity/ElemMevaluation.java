@@ -1,4 +1,4 @@
-package org.ensa.schoolmanagementbackend.model.entities;
+package org.ensa.schoolmanagementbackend.dao.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,23 +7,22 @@ import lombok.NoArgsConstructor;
 
 
 @Entity
-@Table(name = "notes")
+@Table(name = "elem_mevaluations")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Note {
+public class ElemMevaluation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Double note;
-    private Boolean estAbsent;
-
-    @ManyToOne
-    @JoinColumn(name = "etudiant_id")
-    private Etudiant etudiant;
+    private Double coef;
 
     @ManyToOne
     @JoinColumn(name = "s_module_id")
     private SModule sModule;
+
+    @ManyToOne
+    @JoinColumn(name = "m_evaluation_id")
+    private MEvaluation mEvaluation;
 }
