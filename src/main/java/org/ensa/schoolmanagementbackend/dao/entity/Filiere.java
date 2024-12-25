@@ -1,4 +1,4 @@
-package org.ensa.schoolmanagementbackend.model.entities;
+package org.ensa.schoolmanagementbackend.dao.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,18 +13,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "semestres")
+@Table(name = "filieres")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Semestre {
+public class Filiere {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String NSemestre;
-    private String nom;
+    private String NFiliere;
+    private String nom_filiere;
+    private String discription;
 
-    @OneToMany(mappedBy = "semestre", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "filiere", cascade = CascadeType.ALL)
     private List<Module> modules = new ArrayList<Module>();
 }

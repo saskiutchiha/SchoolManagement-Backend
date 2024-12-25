@@ -1,4 +1,4 @@
-package org.ensa.schoolmanagementbackend.model.entities;
+package org.ensa.schoolmanagementbackend.dao.entity;
 
 
 import jakarta.persistence.*;
