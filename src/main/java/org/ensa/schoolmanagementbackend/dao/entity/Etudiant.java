@@ -28,4 +28,7 @@ public class Etudiant {
 
     @OneToMany(mappedBy = "etudiant", cascade = CascadeType.ALL)
     private List<Note> notes = new ArrayList<>();
+
+    @OneToMany(mappedBy = "etudiant", cascade = CascadeType.ALL)
+    private List<SModule> smodules = new ArrayList<>();
 }

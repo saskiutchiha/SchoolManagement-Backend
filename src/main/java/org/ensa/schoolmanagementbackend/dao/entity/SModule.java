@@ -36,5 +36,10 @@ public class SModule {
 
     @OneToMany(mappedBy = "sModule", cascade = CascadeType.ALL)
     private List<ElemMevaluation> elemMevaluations = new ArrayList<ElemMevaluation>();
+
+
+    @ManyToOne
+    @JoinColumn(name = "etudiant_id")
+    private Etudiant etudiant;
 }
 
