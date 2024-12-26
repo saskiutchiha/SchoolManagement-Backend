@@ -9,8 +9,8 @@ import java.util.List;
 @RestController("/admin")
 public class AdminRestAPI {
 
-//    @GetMapping("/getadmins")
-//    public List<Admin> getAdmin(){
-//
-//    }
+    @GetMapping("/getadmins")
+    public List<Admin> getAdmin(){
+
+    }
 }
