@@ -17,4 +17,16 @@ public class AdminDaoImpl{
         return adminRepository.findAll();
     }
 
+    public void addAdmin(Admin admin){
+        adminRepository.save(admin);
+    }
+
+    public void updateAdmin(Admin admin){
+        adminRepository.save(admin);
+    }
+
+    public void deleteAdmin(Admin admin){
+        adminRepository.delete(admin);
+    }
+
 }
