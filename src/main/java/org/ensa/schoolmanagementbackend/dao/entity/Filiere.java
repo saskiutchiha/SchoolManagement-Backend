@@ -22,10 +22,9 @@ public class Filiere {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String NFiliere;
     private String nom_filiere;
     private String discription;
 
-    @OneToMany(mappedBy = "filiere", cascade = CascadeType.ALL)
-    private List<Module> modules = new ArrayList<Module>();
+    @OneToMany(mappedBy = "filiere", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Module> modules = new ArrayList<>();
 }

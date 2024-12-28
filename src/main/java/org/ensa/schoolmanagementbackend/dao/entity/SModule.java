@@ -31,15 +31,19 @@ public class SModule {
     @JoinColumn(name = "prof_id")
     private Prof prof;
 
-    @OneToMany(mappedBy = "sModule", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "sModule", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Note> notes = new ArrayList<>();
 
-    @OneToMany(mappedBy = "sModule", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "sModule", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ElemMevaluation> elemMevaluations = new ArrayList<ElemMevaluation>();
 
+    @OneToMany(mappedBy = "sModule", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<SmoduleEtudiant> smoduleEtudiants = new ArrayList<>();
 
-    @ManyToOne
-    @JoinColumn(name = "etudiant_id")
-    private Etudiant etudiant;
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "etudiant_smodule")
+    private List<Etudiant> etudiants;
+
 }
 
