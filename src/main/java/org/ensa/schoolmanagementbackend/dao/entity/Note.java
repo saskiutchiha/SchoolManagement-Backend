@@ -1,14 +1,15 @@
 package org.ensa.schoolmanagementbackend.dao.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
 @Entity
 @Table(name = "notes")
 @Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Note {
@@ -21,10 +22,13 @@ public class Note {
 
     @ManyToOne
     @JoinColumn(name = "etudiant_id")
+
     private Etudiant etudiant;
 
     @ManyToOne
     @JoinColumn(name = "s_module_id")
+
+
     private SModule sModule;
 
     @ManyToOne

@@ -1,4 +1,12 @@
 package org.ensa.schoolmanagementbackend.dao.entity;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.OneToMany;
+import lombok.*;
 import jakarta.persistence.*;
 import lombok.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -30,4 +38,8 @@ public class Etudiant {
 
     @OneToMany(mappedBy = "etudiant", cascade = CascadeType.ALL)
     private List<SmoduleEtudiant> smodule_etudiant;
+}
+
+
+
 }
