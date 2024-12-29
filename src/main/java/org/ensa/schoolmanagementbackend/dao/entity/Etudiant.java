@@ -1,12 +1,12 @@
 package org.ensa.schoolmanagementbackend.dao.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.OneToMany;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -15,6 +15,8 @@ import java.util.List;
 @Entity
 @Table(name = "etudiants")
 @Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Etudiant {
@@ -27,8 +29,11 @@ public class Etudiant {
     private String prenom;
 
     @OneToMany(mappedBy = "etudiant", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Note> notes = new ArrayList<>();
 
     @OneToMany(mappedBy = "etudiant", cascade = CascadeType.ALL)
-    private List<SModule> smodules = new ArrayList<>();
+    private List<SmoduleEtudiant> smodule_etudiant = new ArrayList<>();
+
+
 }
