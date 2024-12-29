@@ -34,7 +34,6 @@ public class Filiere {
         this.modules = modules;
     }
 
-    private String NFiliere;
     private String nom_filiere;
 
     public void setCode(Long code) {
@@ -79,7 +78,7 @@ public class Filiere {
 
     private String discription;
 
-    @OneToMany(mappedBy = "filiere", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "filiere", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<Module> modules = new ArrayList<Module>();
 }

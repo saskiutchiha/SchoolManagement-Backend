@@ -8,6 +8,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.OneToMany;
 import lombok.*;
 import jakarta.persistence.*;
+import lombok.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.ensa.schoolmanagementbackend.dao.entity.Note;
+import org.ensa.schoolmanagementbackend.dao.entity.SmoduleEtudiant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,10 +34,12 @@ public class Etudiant {
 
     @OneToMany(mappedBy = "etudiant", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<Note> notes = new ArrayList<>();
+    private List<Note> notes;
 
     @OneToMany(mappedBy = "etudiant", cascade = CascadeType.ALL)
-    private List<SmoduleEtudiant> smodule_etudiant = new ArrayList<>();
+    private List<SmoduleEtudiant> smodule_etudiant;
+}
+
 
 
 }

@@ -23,6 +23,6 @@ public class SmoduleEtudiant {
     public Etudiant etudiant ;
 
     @ManyToOne
-    @JoinColumn(name = "etudiant_id2")
+    @JoinColumn(name = "smodule")
     public SModule sModule ;
 }

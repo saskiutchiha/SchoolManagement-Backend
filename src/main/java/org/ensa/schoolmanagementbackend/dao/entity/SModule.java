@@ -33,11 +33,12 @@ public class SModule {
     @JoinColumn(name = "prof_id")
     private Prof prof;
 
-    @OneToMany(mappedBy = "sModule", cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "sModule", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<Note> notes = new ArrayList<>();
 
-    @OneToMany(mappedBy = "sModule", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "sModule", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<SmoduleEtudiant> smodule_etudiant = new ArrayList<>();
 
@@ -94,6 +95,13 @@ public class SModule {
     @OneToMany(mappedBy = "sModule", cascade = CascadeType.ALL)
     private List<ElemMevaluation> elemMevaluations = new ArrayList<ElemMevaluation>();
 
+    @OneToMany(mappedBy = "sModule", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<SmoduleEtudiant> smoduleEtudiants = new ArrayList<>();
+
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "etudiant_smodule")
+    private List<Etudiant> etudiants;
 
 
 
@@ -142,4 +150,3 @@ public class SModule {
 
 
 }
-
