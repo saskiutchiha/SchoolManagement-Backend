@@ -20,7 +20,7 @@ public class SModule {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long code;
 
-    private String NEmodule;
+    private String nemodule;
     private Double coef;
     private Boolean estValide;
 
@@ -49,7 +49,7 @@ public class SModule {
 
     public SModule(Long code, String NEmodule, Double coef, Boolean estValide, Module module, Prof prof, List<Note> notes, List<ElemMevaluation> elemMevaluations, List<Etudiant> etudiant) {
         this.code = code;
-        this.NEmodule = NEmodule;
+//        this.NEmodule = NEmodule;
         this.coef = coef;
         this.estValide = estValide;
         this.module = module;
@@ -62,9 +62,9 @@ public class SModule {
         this.code = code;
     }
 
-    public void setNEmodule(String NEmodule) {
-        this.NEmodule = NEmodule;
-    }
+//    public void setNEmodule(String NEmodule) {
+//        this.NEmodule = NEmodule;
+//    }
 
     public void setCoef(Double coef) {
         this.coef = coef;
@@ -109,9 +109,9 @@ public class SModule {
         return code;
     }
 
-    public String getNEmodule() {
-        return NEmodule;
-    }
+//    public String getNEmodule() {
+//        return NEmodule;
+//    }
 
     public Double getCoef() {
         return coef;

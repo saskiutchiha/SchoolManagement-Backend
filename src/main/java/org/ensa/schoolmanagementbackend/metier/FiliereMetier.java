@@ -1,7 +1,7 @@
 package org.ensa.schoolmanagementbackend.metier;
 
 import org.ensa.schoolmanagementbackend.dao.entity.Filiere;
-import org.ensa.schoolmanagementbackend.dto.FiliereDTO;
+import org.ensa.schoolmanagementbackend.dao.dto.FiliereDTO;
 
 import java.util.List;
 
