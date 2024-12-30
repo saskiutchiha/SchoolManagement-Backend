@@ -1,12 +1,12 @@
-package org.ensa.schoolmanagementbackend.dto;
+package org.ensa.schoolmanagementbackend.dao.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class FiliereDTO {
     private Long filiereId;
     private String nomFiliere;

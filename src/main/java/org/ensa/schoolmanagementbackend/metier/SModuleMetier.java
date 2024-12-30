@@ -1,14 +1,14 @@
 package org.ensa.schoolmanagementbackend.metier;
 
 import org.ensa.schoolmanagementbackend.dao.entity.SModule;
-import org.ensa.schoolmanagementbackend.dao.repository.SModuleRepository;
+import org.ensa.schoolmanagementbackend.dao.repository.SmoduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class SModuleMetier
 { @Autowired
-    SModuleRepository sModuleRepository;
+    SmoduleRepository sModuleRepository;
     public Long addSmodule(SModule sModule){
         return sModuleRepository.save(sModule).getCode();
     }

@@ -3,7 +3,7 @@ package org.ensa.schoolmanagementbackend.metier;
 import org.ensa.schoolmanagementbackend.dao.entity.Filiere;
 import org.ensa.schoolmanagementbackend.dao.impl.FiliereDaoImpl;
 import org.ensa.schoolmanagementbackend.dao.impl.SmoduleEtudiantImpl;
-import org.ensa.schoolmanagementbackend.dto.FiliereDTO;
+import org.ensa.schoolmanagementbackend.dao.dto.FiliereDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,8 +25,8 @@ public class FiliereMetierImpl implements FiliereMetier {
 
         return filieres.stream()
                 .map(filiere -> {
-                    long studentCount = smoduleEtudiantImpl.countEtudiantsByFiliereId(filiere.getId());
-                    return new FiliereDTO(filiere.getId(),filiere.getNom_filiere(), filiere.getDiscription(), studentCount);
+                    long studentCount = smoduleEtudiantImpl.countEtudiantsByFiliereId(filiere.getCode());
+                    return new FiliereDTO(filiere.getCode(),filiere.getNom_filiere(), filiere.getDiscription(), studentCount);
                 })
                 .collect(Collectors.toList());
     }

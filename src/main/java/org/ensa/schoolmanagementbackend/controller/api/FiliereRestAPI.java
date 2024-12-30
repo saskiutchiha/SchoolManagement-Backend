@@ -1,10 +1,8 @@
 package org.ensa.schoolmanagementbackend.controller.api;
 
-import org.ensa.schoolmanagementbackend.dao.entity.Admin;
 import org.ensa.schoolmanagementbackend.dao.entity.Filiere;
-import org.ensa.schoolmanagementbackend.dto.FiliereDTO;
+import org.ensa.schoolmanagementbackend.dao.dto.FiliereDTO;
 import org.ensa.schoolmanagementbackend.metier.FiliereMetier;
-import org.ensa.schoolmanagementbackend.metier.FiliereMetierImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -11,9 +11,9 @@ public interface SmoduleEtudiantRepository extends JpaRepository<SmoduleEtudiant
 
     @Query("SELECT COUNT(se.etudiant.id) " +
             "FROM SmoduleEtudiant se " +
-            "WHERE se.sModule.id IN (" +
-            "  SELECT sm.id FROM SModule sm WHERE sm.module.id IN (" +
-            "    SELECT m.id FROM Module m WHERE m.filiere.id = :filiereId" +
+            "WHERE se.sModule.code IN (" +
+            "  SELECT sm.code FROM SModule sm WHERE sm.module.code IN (" +
+            "    SELECT m.code FROM Module m WHERE m.filiere.code = :filiereId" +
             "  )" +
             ")")
     long countEtudiantsByFiliereId(@Param("filiereId") Long filiereId);
