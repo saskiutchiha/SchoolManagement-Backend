@@ -28,7 +28,7 @@ public class Filiere {
 
     public Filiere(Long code, String NFiliere, String nom_filiere, String discription, List<Module> modules) {
         this.code = code;
-        this.NFiliere = NFiliere;
+//        this.NFiliere = NFiliere;
         this.nom_filiere = nom_filiere;
         this.discription = discription;
         this.modules = modules;
@@ -40,9 +40,9 @@ public class Filiere {
         this.code = code;
     }
 
-    public void setNFiliere(String NFiliere) {
-        this.NFiliere = NFiliere;
-    }
+//    public void setNFiliere(String NFiliere) {
+//        this.NFiliere = NFiliere;
+//    }
 
     public void setNom_filiere(String nom_filiere) {
         this.nom_filiere = nom_filiere;
@@ -60,9 +60,9 @@ public class Filiere {
         return code;
     }
 
-    public String getNFiliere() {
-        return NFiliere;
-    }
+//    public String getNFiliere() {
+//        return NFiliere;
+//    }
 
     public String getNom_filiere() {
         return nom_filiere;

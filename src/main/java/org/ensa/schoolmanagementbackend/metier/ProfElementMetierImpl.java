@@ -1,5 +1,6 @@
 package org.ensa.schoolmanagementbackend.metier;
 
+import org.ensa.schoolmanagementbackend.dao.dto.SModuleDtO;
 import org.ensa.schoolmanagementbackend.dao.entity.Prof;
 import org.ensa.schoolmanagementbackend.dao.entity.SModule;
 import org.ensa.schoolmanagementbackend.dao.repository.ProfRepository;
@@ -21,9 +22,15 @@ public class ProfElementMetierImpl implements  ProfElementMetier {
     private ProfRepository profRepository;
 
     @Override
-    public void affect(Prof professeur, SModule smodule) {
-        smodule.setProf(professeur);
-        smoduleRepository.save(smodule);
+    public void affect(Prof professeur, SModuleDtO smoduleDto) {
+        SModule sModule = smoduleRepository.findById(smoduleDto.getCode())
+                .orElseThrow();
+
+        System.out.println(sModule.getModule().getNom());
+
+        sModule.setProf(professeur);
+
+        smoduleRepository.save(sModule);
     }
 
     @Override
@@ -45,5 +52,15 @@ public class ProfElementMetierImpl implements  ProfElementMetier {
     @Override
     public List<SModule> disponibleSModule() {
         return smoduleRepository.smoduleDispo();
+    }
+
+    @Override
+    public List<SModule> showAffectation() {
+        return smoduleRepository.smoduleAffected();
+    }
+
+    @Override
+    public void deleteAffectation(SModule sModule) {
+        smoduleRepository.deleteProfAffectation(sModule);
     }
 }
