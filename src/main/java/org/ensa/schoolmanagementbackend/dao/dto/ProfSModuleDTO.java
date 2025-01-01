@@ -11,5 +11,5 @@ import org.ensa.schoolmanagementbackend.dao.entity.SModule;
 @Setter
 public class ProfSModuleDTO {
     private Prof professeur;
-    private SModule smodule;
+    private SModuleDtO smodule;
 }

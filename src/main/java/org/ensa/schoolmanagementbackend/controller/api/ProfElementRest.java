@@ -35,4 +35,15 @@ public class ProfElementRest {
     public List<SModule> disponibleModule() {
         return profElementMetier.disponibleSModule();
     }
+
+    @GetMapping("/showaffectprofelement")
+    public List<SModule> showAffectation() {
+        return profElementMetier.showAffectation();
+    }
+
+
+    @PutMapping("/deleteaffectprofelement")
+    public void deleteAffectation(@RequestBody SModule sModule) {
+        profElementMetier.deleteAffectation(sModule);
+    }
 }

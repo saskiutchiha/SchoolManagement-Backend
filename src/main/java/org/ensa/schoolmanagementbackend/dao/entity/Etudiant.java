@@ -39,7 +39,3 @@ public class Etudiant {
     @OneToMany(mappedBy = "etudiant", cascade = CascadeType.ALL)
     private List<SmoduleEtudiant> smodule_etudiant;
 }
-
-
-
-}
