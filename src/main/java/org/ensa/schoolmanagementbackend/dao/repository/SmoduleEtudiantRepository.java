@@ -6,8 +6,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface SmoduleEtudiantRepository extends JpaRepository<SmoduleEtudiant, Long> {
+
+    List<SmoduleEtudiant> findBysModule_Code(Long code);
 
     @Query("SELECT COUNT(se.etudiant.id) " +
             "FROM SmoduleEtudiant se " +

@@ -46,7 +46,7 @@ public class ModuleAPI {
          sm.setProf(smdto.getProf());
          sm.setCoef(smdto.getCoef());
          sm.setModule(smdto.getModule());
-         sm.setNEmodule(smdto.getNemodule());
+//         sm.setNEmodule(smdto.getNemodule());
         System.out.println(sm);
         return ResponseEntity.ok(smoduleMetier.addSmodule(sm));
     }
@@ -69,7 +69,7 @@ public class ModuleAPI {
         sm.setProf(smdto.getProf());
         sm.setCoef(smdto.getCoef());
         sm.setModule(smdto.getModule());
-        sm.setNEmodule(smdto.getNemodule());
+//        sm.setNEmodule(smdto.getNemodule());
         smoduleMetier.modifier(sm);
     }
     @PostMapping("deletemodalite")
