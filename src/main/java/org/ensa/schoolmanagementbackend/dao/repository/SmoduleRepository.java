@@ -13,6 +13,8 @@ import java.util.List;
 @Repository
 public interface SmoduleRepository extends JpaRepository<SModule,Long> {
 
+    List<SModule> findByModuleCode(Long moduleId);
+
     @Query("SELECT sm FROM SModule sm WHERE sm.prof IS NULL")
     List<SModule> smoduleDispo();
 

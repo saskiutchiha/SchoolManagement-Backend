@@ -37,5 +37,6 @@ public class Etudiant {
     private List<Note> notes;
 
     @OneToMany(mappedBy = "etudiant", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<SmoduleEtudiant> smodule_etudiant;
 }
