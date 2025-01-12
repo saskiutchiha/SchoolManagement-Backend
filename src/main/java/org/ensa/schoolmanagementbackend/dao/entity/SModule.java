@@ -95,8 +95,6 @@ public class SModule {
     @OneToMany(mappedBy = "sModule", cascade = CascadeType.ALL)
     private List<ElemMevaluation> elemMevaluations = new ArrayList<ElemMevaluation>();
 
-    @OneToMany(mappedBy = "sModule", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<SmoduleEtudiant> smoduleEtudiants = new ArrayList<>();
 
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})

@@ -25,4 +25,6 @@ public interface SmoduleRepository extends JpaRepository<SModule,Long> {
     @Transactional
     @Query("UPDATE SModule sm SET sm.prof = NULL WHERE sm = :smodule")
     void deleteProfAffectation(SModule smodule);
+
+    long countByProf(Prof prof);
 }

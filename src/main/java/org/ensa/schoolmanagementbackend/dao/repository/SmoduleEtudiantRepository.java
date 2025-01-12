@@ -13,6 +13,7 @@ public interface SmoduleEtudiantRepository extends JpaRepository<SmoduleEtudiant
 
     List<SmoduleEtudiant> findBysModule_Code(Long code);
 
+
     @Query("SELECT COUNT(se.etudiant.id) " +
             "FROM SmoduleEtudiant se " +
             "WHERE se.sModule.code IN (" +
