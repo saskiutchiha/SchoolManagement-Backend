@@ -1,19 +1,16 @@
 package org.ensa.schoolmanagementbackend.controller.api;
 import org.ensa.schoolmanagementbackend.dao.dto.ElemMevaluDto;
 import org.ensa.schoolmanagementbackend.dao.dto.SModuleDtO;
-import org.ensa.schoolmanagementbackend.dao.entity.ElemMevaluation;
-import org.ensa.schoolmanagementbackend.dao.entity.MEvaluation;
-import  org.ensa.schoolmanagementbackend.dao.entity.Module;
+import org.ensa.schoolmanagementbackend.dao.entity.*;
 
-import org.ensa.schoolmanagementbackend.dao.entity.SModule;
+import org.ensa.schoolmanagementbackend.dao.entity.Module;
 import org.ensa.schoolmanagementbackend.dao.impl.ModuleImpl;
-import org.ensa.schoolmanagementbackend.metier.ElemMevalMetier;
-import org.ensa.schoolmanagementbackend.metier.ModuleMetierImpl;
-import org.ensa.schoolmanagementbackend.metier.SModuleMetier;
+import org.ensa.schoolmanagementbackend.metier.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -26,13 +23,17 @@ public class ModuleAPI {
     SModuleMetier smoduleMetier;
     @Autowired
     ElemMevalMetier elemMevalMetier;
+    @Autowired
+    private ModuleMetierImpl moduleMetierImpl;
+    @Autowired
+    SmoduleEtudMetier smoduleEtudMetier;
+    @Autowired
+    MEvaluationMetier mevaluationMetier;
+    @Autowired
+    NoteMetier noteMetier;
     @GetMapping("/getmodules")
     public List<Module> getModules(){
     return module.getModules();
-    }
-    @PostMapping("/deletemodule")
-    public void getModules(@RequestBody Module m){
-        module.deleteModule(m);
     }
     @PostMapping("/addmodule")
     public void addModule(@RequestBody Module m){
@@ -46,12 +47,26 @@ public class ModuleAPI {
          sm.setProf(smdto.getProf());
          sm.setCoef(smdto.getCoef());
          sm.setModule(smdto.getModule());
-//         sm.setNEmodule(smdto.getNemodule());
+         sm.setNEmodule(smdto.getNemodule());
         System.out.println(sm);
-        return ResponseEntity.ok(smoduleMetier.addSmodule(sm));
+        Long code  = smoduleMetier.addSmodule(sm);
+        smoduleEtudMetier.affecteEtudiantSmodule(smdto.getModule().getCode(), code);
+        return ResponseEntity.ok(code);
     }
     @PostMapping("/addmodlitedelem")
     public ResponseEntity<Long> addmodliledelem(@RequestBody ElemMevaluDto emdto){
+        List<SmoduleEtudiant> listsmetud = smoduleEtudMetier.findbySmoduleCode(emdto.getSmodule().getCode());
+        List<Note> lnotes = new ArrayList<>();
+        for (SmoduleEtudiant smEtud : listsmetud) {
+            Note note = new Note();
+            note.setMEval(emdto.getMeval());
+            note.setSModule(emdto.getSmodule()); // Setting the SModule from emdto
+            note.setEtudiant(smEtud.getEtudiant()); // Linking the student from the current iteration
+             // Default grade, you can adjust this value
+            note.setEstAbsent(false); // Default presence status
+            lnotes.add(note);
+        }
+        noteMetier.savenotes(lnotes);
         ElemMevaluation em = new ElemMevaluation();
         em.setSModule(emdto.getSmodule());
         em.setCoef(emdto.getCoef());
@@ -69,7 +84,7 @@ public class ModuleAPI {
         sm.setProf(smdto.getProf());
         sm.setCoef(smdto.getCoef());
         sm.setModule(smdto.getModule());
-//        sm.setNEmodule(smdto.getNemodule());
+        sm.setNEmodule(smdto.getNemodule());
         smoduleMetier.modifier(sm);
     }
     @PostMapping("deletemodalite")
@@ -90,5 +105,19 @@ public class ModuleAPI {
         sm = smoduleMetier.getSmodule(sm.getCode());
         smoduleMetier.deletesmodule(sm);
     }
+    @PostMapping("/deletemodule")
+    public void deletemodule(@RequestBody Module m){
+        System.out.println(m);
+        Module m1 = moduleMetierImpl.getModule(m.getCode());
+        moduleMetierImpl.deleteModule(m1);
 
+    }
+    @GetMapping("/getmodulesbyprof/{profid}")
+    public List<SModule> getModuleByProfid(@PathVariable Long profid){
+        return smoduleMetier.getSModuleByProf(profid);
+    }
+    @GetMapping("/Modalite")
+    public List<MEvaluation> getModalite(){
+        return mevaluationMetier.getmodalite();
+    }
 }

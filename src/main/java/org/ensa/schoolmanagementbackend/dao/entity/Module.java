@@ -87,7 +87,6 @@ public class Module {
     @JoinColumn(name = "semestre_id")
     private Semestre semestre;
 
-    @OneToMany(mappedBy = "module", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<SModule> sModules = new ArrayList<>();
-
+    @OneToMany(mappedBy = "module", cascade = CascadeType.ALL)
+    private List<SModule> sModules = new ArrayList<SModule>();
 }

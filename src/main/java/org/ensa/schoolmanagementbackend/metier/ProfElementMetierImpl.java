@@ -4,7 +4,7 @@ import org.ensa.schoolmanagementbackend.dao.dto.SModuleDtO;
 import org.ensa.schoolmanagementbackend.dao.entity.Prof;
 import org.ensa.schoolmanagementbackend.dao.entity.SModule;
 import org.ensa.schoolmanagementbackend.dao.repository.ProfRepository;
-import org.ensa.schoolmanagementbackend.dao.repository.SmoduleRepository;
+import org.ensa.schoolmanagementbackend.dao.repository.SModuleRepository;
 import org.ensa.schoolmanagementbackend.dao.dto.ProfDispoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import java.util.List;
 public class ProfElementMetierImpl implements  ProfElementMetier {
 
     @Autowired
-    private SmoduleRepository smoduleRepository;
+    private SModuleRepository smoduleRepository;
 
     @Autowired
     private ProfRepository profRepository;

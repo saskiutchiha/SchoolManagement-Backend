@@ -8,7 +8,7 @@ import org.ensa.schoolmanagementbackend.dao.entity.SmoduleEtudiant;
 import org.ensa.schoolmanagementbackend.dao.repository.EtudiantRepository;
 import org.ensa.schoolmanagementbackend.dao.repository.ModuleRepository;
 import org.ensa.schoolmanagementbackend.dao.repository.SmoduleEtudiantRepository;
-import org.ensa.schoolmanagementbackend.dao.repository.SmoduleRepository;
+import org.ensa.schoolmanagementbackend.dao.repository.SModuleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +26,7 @@ public class EtudiantMetierImpl implements EtudiantMetier {
     private ModuleRepository moduleRepository;
 
     @Autowired
-    private SmoduleRepository sModuleRepository;
+    private SModuleRepository sModuleRepository;
 
     @Autowired
     private SmoduleEtudiantRepository smoduleEtudiantRepository;

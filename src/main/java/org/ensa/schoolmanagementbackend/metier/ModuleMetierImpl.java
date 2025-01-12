@@ -40,4 +40,8 @@ public class ModuleMetierImpl implements ModuleMetier {
     public void addModule(Module module) {
         moduleRepository.save(module);
     }
+    public Module getModule(Long code) {
+        return moduleRepository.getById(code);
+    }
+
 }
