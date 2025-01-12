@@ -3,8 +3,10 @@ package org.ensa.schoolmanagementbackend.dao.repository;
 import org.ensa.schoolmanagementbackend.dao.dto.EvaluationStatisticsDTO;
 import org.ensa.schoolmanagementbackend.dao.entity.SModule;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,8 +14,18 @@ public interface SModuleRepository extends JpaRepository<SModule, Long> {
     List<SModule> findByProf_Code(Long profCode);
 
     List<SModule> getAllByModule_Code(Long moduleCode);
-
+    List<SModule> findByModuleCode(Long moduleId);
     List<SModule> getByCode(Long code);
+    @Query("SELECT sm FROM SModule sm WHERE sm.prof IS NULL")
+    List<SModule> smoduleDispo();
+
+    @Query("SELECT sm FROM SModule sm WHERE sm.prof IS NOT NULL")
+    List<SModule> smoduleAffected();
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE SModule sm SET sm.prof = NULL WHERE sm = :smodule")
+    void deleteProfAffectation(SModule smodule);
     @Query(value = """
           SELECT 
             me.nom AS type,

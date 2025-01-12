@@ -26,7 +26,7 @@ public class ProfSmoduleVisionAPI {
     @Autowired
     SmoduleEtudMetier SmetudMetier;
     @Autowired
-    SModuleMetier SmoduleMetier;   
+    SModuleMetier SmoduleMetier;
     @GetMapping("getmoyeenes/{smoduleid}")
 public List<SmoduleEtudiant> getmoyennes(@PathVariable Long smoduleid){
         List<SmoduleEtudiant> listmouennes =  SmetudMetier.findbySmoduleCode(smoduleid);
