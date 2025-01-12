@@ -1,7 +1,6 @@
 package org.ensa.schoolmanagementbackend.controller.api;
 
 import org.ensa.schoolmanagementbackend.dao.entity.Admin;
-import org.ensa.schoolmanagementbackend.metier.AdminMetier;
 import org.ensa.schoolmanagementbackend.metier.AdminMetierImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +13,7 @@ import java.util.List;
 public class AdminRestAPI {
 
     @Autowired
-    private AdminMetier adminMetier;
+    private AdminMetierImpl adminMetier;
 
     @GetMapping("/getadmins")
     public List<Admin> getAdmins(){

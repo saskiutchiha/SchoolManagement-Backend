@@ -28,21 +28,22 @@ public class Filiere {
 
     public Filiere(Long code, String NFiliere, String nom_filiere, String discription, List<Module> modules) {
         this.code = code;
-//        this.NFiliere = NFiliere;
+        this.NFiliere = NFiliere;
         this.nom_filiere = nom_filiere;
         this.discription = discription;
         this.modules = modules;
     }
 
+    private String NFiliere;
     private String nom_filiere;
 
     public void setCode(Long code) {
         this.code = code;
     }
 
-//    public void setNFiliere(String NFiliere) {
-//        this.NFiliere = NFiliere;
-//    }
+    public void setNFiliere(String NFiliere) {
+        this.NFiliere = NFiliere;
+    }
 
     public void setNom_filiere(String nom_filiere) {
         this.nom_filiere = nom_filiere;
@@ -60,9 +61,9 @@ public class Filiere {
         return code;
     }
 
-//    public String getNFiliere() {
-//        return NFiliere;
-//    }
+    public String getNFiliere() {
+        return NFiliere;
+    }
 
     public String getNom_filiere() {
         return nom_filiere;
@@ -78,7 +79,7 @@ public class Filiere {
 
     private String discription;
 
-    @OneToMany(mappedBy = "filiere", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "filiere", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Module> modules = new ArrayList<Module>();
 }

@@ -13,7 +13,7 @@ import lombok.*;
 public class SmoduleEtudiant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long code;
+    private Long code;
     private float moyenne;
 
 
@@ -23,6 +23,6 @@ public class SmoduleEtudiant {
     public Etudiant etudiant ;
 
     @ManyToOne
-    @JoinColumn(name = "smodule")
+    @JoinColumn(name = "etudiant_id2")
     public SModule sModule ;
 }
