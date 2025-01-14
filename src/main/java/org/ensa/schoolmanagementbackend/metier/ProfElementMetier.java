@@ -1,5 +1,6 @@
 package org.ensa.schoolmanagementbackend.metier;
 
+import org.ensa.schoolmanagementbackend.dao.dto.ProfElementStatsDTO;
 import org.ensa.schoolmanagementbackend.dao.dto.SModuleDtO;
 import org.ensa.schoolmanagementbackend.dao.entity.Prof;
 import org.ensa.schoolmanagementbackend.dao.entity.SModule;
@@ -14,4 +15,6 @@ public interface ProfElementMetier {
     public List<SModule> disponibleSModule();
     public List<SModule> showAffectation();
     public void deleteAffectation(SModule sModule);
+
+    List<ProfElementStatsDTO> getProfElementStats();
 }

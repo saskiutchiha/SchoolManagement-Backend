@@ -1,5 +1,6 @@
 package org.ensa.schoolmanagementbackend.metier;
 
+import org.ensa.schoolmanagementbackend.dao.dto.ProfElementStatsDTO;
 import org.ensa.schoolmanagementbackend.dao.dto.SModuleDtO;
 import org.ensa.schoolmanagementbackend.dao.entity.Prof;
 import org.ensa.schoolmanagementbackend.dao.entity.SModule;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProfElementMetierImpl implements  ProfElementMetier {
@@ -62,5 +64,18 @@ public class ProfElementMetierImpl implements  ProfElementMetier {
     @Override
     public void deleteAffectation(SModule sModule) {
         smoduleRepository.deleteProfAffectation(sModule);
+    }
+
+
+    @Override
+    public List<ProfElementStatsDTO> getProfElementStats() {
+        List<Prof> profs = profRepository.findAll();
+
+        return profs.stream()
+                .map(prof -> {
+                    long nombreSModule = smoduleRepository.countByProf(prof);
+                    return new ProfElementStatsDTO(prof, nombreSModule);
+                })
+                .collect(Collectors.toList());
     }
 }

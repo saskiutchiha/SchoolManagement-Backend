@@ -1,5 +1,6 @@
 package org.ensa.schoolmanagementbackend.controller.api;
 
+import org.ensa.schoolmanagementbackend.dao.dto.ProfElementStatsDTO;
 import org.ensa.schoolmanagementbackend.dao.entity.SModule;
 import org.ensa.schoolmanagementbackend.dao.dto.ProfDispoDTO;
 import org.ensa.schoolmanagementbackend.dao.dto.ProfSModuleDTO;
@@ -45,5 +46,10 @@ public class ProfElementRest {
     @PutMapping("/deleteaffectprofelement")
     public void deleteAffectation(@RequestBody SModule sModule) {
         profElementMetier.deleteAffectation(sModule);
+    }
+
+    @GetMapping("/getProfElementStats")
+    public List<ProfElementStatsDTO> getProfElementStats() {
+        return profElementMetier.getProfElementStats();
     }
 }
