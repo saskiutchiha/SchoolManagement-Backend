@@ -11,9 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-public interface SmoduleRepository extends JpaRepository<SModule,Long> {
-
-    List<SModule> findByModuleCode(Long moduleId);
+public interface SModuleRepository extends JpaRepository<SModule,Long> {
 
     @Query("SELECT sm FROM SModule sm WHERE sm.prof IS NULL")
     List<SModule> smoduleDispo();
@@ -25,6 +23,4 @@ public interface SmoduleRepository extends JpaRepository<SModule,Long> {
     @Transactional
     @Query("UPDATE SModule sm SET sm.prof = NULL WHERE sm = :smodule")
     void deleteProfAffectation(SModule smodule);
-
-    long countByProf(Prof prof);
 }

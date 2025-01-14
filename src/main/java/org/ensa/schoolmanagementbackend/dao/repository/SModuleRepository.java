@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-public interface SmoduleRepository extends JpaRepository<SModule,Long> {
+public interface SModuleRepository extends JpaRepository<SModule,Long> {
 
     @Query("SELECT sm FROM SModule sm WHERE sm.prof IS NULL")
     List<SModule> smoduleDispo();
