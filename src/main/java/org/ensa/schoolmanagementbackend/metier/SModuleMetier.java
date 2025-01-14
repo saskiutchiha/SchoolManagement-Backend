@@ -8,6 +8,7 @@ import org.ensa.schoolmanagementbackend.dao.repository.SModuleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -58,7 +59,8 @@ public class SModuleMetier
                         (Double) row[2],                 // median
                         (Double) row[3],                 // standardDeviation
                         (Double) row[4],                 // minGrade
-                        (Double) row[5]                 // maxGrade
+                        (Double) row[5] ,
+                        ((BigDecimal) row[6]).doubleValue()   // maxGrade
                                           // weight
                 ))
                 .collect(Collectors.toList());

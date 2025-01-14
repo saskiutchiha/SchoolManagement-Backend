@@ -64,7 +64,7 @@ public class NoteMetier {
         for (SmoduleEtudiant smE : smoduleEtud.getAllBysModule(sousModule)) {
             double coef = 0;
             double moyenne = 0.0;
-
+            double total_coef  = 0;
             List<Note> lNotes = smE.getEtudiant().getNotes();
             // Parcourir les notes et leurs coefficients
             for (int i = 0; i < lNotes.size(); i++) {
@@ -73,6 +73,7 @@ public class NoteMetier {
                     for (ElemMevaluation meval : mevals) {
                         if (meval.getMEvaluation().getCode() == lNotes.get(i).getMEval().getCode()){
                             coef = meval.getMEvaluation().getCoef();
+                            total_coef += coef;
                             break;
                         }
                     }
@@ -88,7 +89,7 @@ public class NoteMetier {
                etud.setNom(smE.getEtudiant().getNom());
                SmoduleEtudiant smetud = smoduleEtud.findBysModuleAndEtudiant(sousModule, etud);
 
-            smetud.setMoyenne((float)moyenne);
+            smetud.setMoyenne((float)(moyenne/total_coef));
             smoduleEtud.save(smetud);
                 moyennes.put(etud, moyenne);
 

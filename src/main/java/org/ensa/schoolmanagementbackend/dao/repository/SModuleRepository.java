@@ -27,19 +27,21 @@ public interface SModuleRepository extends JpaRepository<SModule, Long> {
     @Query("UPDATE SModule sm SET sm.prof = NULL WHERE sm = :smodule")
     void deleteProfAffectation(SModule smodule);
     @Query(value = """
-          SELECT 
+
+            SELECT
             me.nom AS type,
             ROUND(AVG(n.note), 2) AS average,
             ROUND(STDDEV(n.note), 2) AS standardDeviation,
             MIN(n.note) AS minGrade,
             MAX(n.note) AS maxGrade,
-            ROUND(AVG(em.coef) * 100, 2) AS weight
+            ROUND(100.0 * em.coef / SUM(em.coef) OVER (PARTITION BY sm.code), 2) AS weight,
+            ROUND(100.0 * SUM(CASE WHEN n.note > 12 THEN 1 ELSE 0 END) / COUNT(n.note), 2) AS percentageAbove12
         FROM s_modules sm
         JOIN elem_mevaluations em ON em.s_module_id = sm.code
         JOIN m_evaluations me ON me.id = em.m_evaluation_id
         JOIN notes n ON n.s_module_id = sm.code AND n.m_eval_id = me.id
         WHERE sm.code = :codeModule
-        GROUP BY sm.code, me.nom
+        GROUP BY sm.code, me.nom, em.coef
         """, nativeQuery = true)
     List<Object[]> getEvaluationStatisticsByModuleCode(@Param("codeModule") Long codeModule);
     @Query(value = """
