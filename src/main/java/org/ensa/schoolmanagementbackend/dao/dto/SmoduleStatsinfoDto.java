@@ -16,5 +16,6 @@ public class SmoduleStatsinfoDto {
         private Double minGrade;
         private Double maxGrade;
         private Double weight;
+        private Double percentageAbove12;
 
 }
