@@ -19,7 +19,7 @@ import java.util.List;
 @Data
 //@AllArgsConstructor
 public class Prof {
-    public Prof(Long id, String nom, String prenom, long code, String email, String specialite, String password, List<SModule> sModules) {
+    public Prof(Long id, String nom, String prenom, long code, String email, String specialite, String password, List<SModule> sModules , String photourl) {
         this.nom = nom;
         this.prenom = prenom;
         this.code = code;
@@ -27,6 +27,7 @@ public class Prof {
         this.specialite = specialite;
         this.password = password;
         this.sModules = sModules;
+        this.photourl = photourl;
     }
 
     @Id
@@ -53,6 +54,14 @@ public class Prof {
         this.code = code;
     }
 
+    public String getPhotourl() {
+        return photourl;
+    }
+
+    public void setPhotourl(String photourl) {
+        this.photourl = photourl;
+    }
+
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
@@ -73,6 +82,7 @@ public class Prof {
     private String email;
     private String specialite;
     private String password;
+    private String photourl ;
 
     public Long getId() {
         return code;

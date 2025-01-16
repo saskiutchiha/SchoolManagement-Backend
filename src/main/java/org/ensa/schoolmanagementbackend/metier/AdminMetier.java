@@ -10,4 +10,6 @@ public interface AdminMetier {
     public void addAdmin(Admin admin);
     public void updateAdmin(Admin admin);
     public void deleteAdmin(Admin admin);
+    public boolean verifyAdmin(Admin admin);
+
 }

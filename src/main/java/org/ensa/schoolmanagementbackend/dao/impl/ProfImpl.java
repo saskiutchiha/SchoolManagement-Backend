@@ -28,5 +28,8 @@ public class ProfImpl {
     public void addprof(Prof prof){
         profRepository.save(prof);
     }
+    public Prof findbymail(Prof prof){
+        return profRepository.findByEmail(prof.getEmail());
+    }
 
 }
